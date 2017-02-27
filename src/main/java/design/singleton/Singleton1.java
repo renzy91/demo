@@ -2,6 +2,7 @@ package design.singleton;
 
 /**
  * 饿汉式单例模式
+ * 调用效率高,不能延时加载
  * @ClassName: Singleton1 
  * @Description: 
  * @author renzy 

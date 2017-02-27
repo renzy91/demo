@@ -2,6 +2,8 @@ package design.singleton;
 
 /**
  * 枚举单例模式
+ * 线程安全 调用效率高 不能延时加载
+ * 可以防反射和反序列化漏洞
  * @ClassName: Singleton5 
  * @Description: TODO
  * @author renzy 

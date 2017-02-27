@@ -1,6 +1,7 @@
 package design.singleton;
 /**
- * 懒汉式单例模式
+ * 懒汉式单例模式 
+ * 调用效率不高，可以延时加载
  * @ClassName: Singleton1 
  * @Description: 
  * @author renzy 
