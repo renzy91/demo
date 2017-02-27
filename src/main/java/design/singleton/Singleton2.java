@@ -1,8 +1,8 @@
 package design.singleton;
 /**
- * 
+ * 懒汉式单例模式
  * @ClassName: Singleton1 
- * @Description: TODO 懒汉式单例模式
+ * @Description: 
  * @author renzy 
  * @date 2017年2月24日 下午4:54:15 
  *
