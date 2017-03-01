@@ -1,7 +1,7 @@
 package design.composite;
 
 /**
- * 抽象构建：定义了叶子和容器构件的共同点
+ * 抽象构件：定义了叶子和容器构件的共同点
  * @ClassName: Component 
  * @Description:
  * @author renzy 
