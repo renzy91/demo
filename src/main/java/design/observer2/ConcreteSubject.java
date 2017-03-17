@@ -16,8 +16,4 @@ public class ConcreteSubject extends Observable{
 	public int getState() {
 		return state;
 	}
-	
-
-	
-	
 }
