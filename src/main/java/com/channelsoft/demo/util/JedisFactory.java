@@ -18,7 +18,6 @@ import redis.clients.jedis.JedisPool;
  * @author lixianglin
  */
 public class JedisFactory extends GenericObjectPoolConfig {
-//	private static com.channelsoft.redis.JedisFactory config;
 	private static JedisFactory config;
 	private static JedisPool jedisPool ;
     protected static Log log = LogFactory.getLog(JedisFactory.class);
@@ -30,6 +29,7 @@ public class JedisFactory extends GenericObjectPoolConfig {
     public static long MAX_WAIT;
     public static boolean TEST_ON_BORROW;
     public static boolean TEST_ON_RETURN;
+    public static int DATABASE;
 
     static {
         initParam();
@@ -41,10 +41,9 @@ public class JedisFactory extends GenericObjectPoolConfig {
      */
     private static void initPool() {
     	config=new JedisFactory();
-//            config = new com.channelsoft.redis.JedisFactory();
             jedisPool =  new JedisPool(config, REDIS_IP,
                     REDIS_PORT, 10000,
-                    REDIS_PASSWORD);
+                    REDIS_PASSWORD,DATABASE);
             log.debug("redis 单例pool初始化完毕...");
     }
 
@@ -81,9 +80,11 @@ public class JedisFactory extends GenericObjectPoolConfig {
         	MAX_ACTIVE = ConfigUtil.getInt(ConfigUtil.REDIS_MAX_ACTIVE,600);
         	MAX_IDLE = ConfigUtil.getInt(ConfigUtil.REDIS_MAX_IDLE, 200);
         	MAX_WAIT = ConfigUtil.getInt(ConfigUtil.REDIS_MAX_WAIT, 1000);
+        	DATABASE=ConfigUtil.getInt(ConfigUtil.DATABASE, 0);
         	TEST_ON_BORROW = Boolean.valueOf(ConfigUtil.getString(ConfigUtil.REDIS_TEST_ON_BORROW, "true"));
         	TEST_ON_RETURN = Boolean.valueOf(ConfigUtil.getString(ConfigUtil.REDIS_TEST_ON_RETURN, "true"));
         	log.debug("redis 参数初始化完毕...");
+        	log.error("database................"+DATABASE);
         } catch (Exception e) {
            log.error("redis 参数初始化失败"+e.getMessage(),e);
         }

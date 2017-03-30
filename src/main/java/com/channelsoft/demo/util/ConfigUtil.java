@@ -6,15 +6,10 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
-import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.alibaba.fastjson.JSON;
 
 
 public class ConfigUtil {
@@ -32,6 +27,7 @@ public class ConfigUtil {
 	public final static String WEB_URL="web.url";
 	public final static String CHAT_TOPIC="chat.topic";
 	public final static String TOPIC="topic";
+	public final static String DATABASE="redis.database";
 	static {
 		loadProperties();
 	}
@@ -91,126 +87,5 @@ public class ConfigUtil {
 		} catch (NullPointerException e) {
 			return defaultValue;
 		}
-	}
-	/**
-	 * 
-	 * TODO(作用).登录红云接口参数 <br/>
-	 * @author lixl
-	 * @return
-	 * @since JDK 1.6
-	 * CreateDate: 2016-12-26
-	 */
-	public static String loginParamter(){
-		Map<String, Object> mapParamter=new HashMap<String, Object>();
-		mapParamter.put("cmd_name","butelUserLogin");
-		Map<String, String> argParamter=new HashMap<>();
-		mapParamter.put("parameter", argParamter);
-		String uid=UUID.randomUUID().toString();
-		String cmd_id=UUID.randomUUID().toString();
-		argParamter.put("uid",uid);
-		argParamter.put("appkey",ConfigUtil.getString(ConfigUtil.APP_KEY));
-		argParamter.put("nickname","systemManager");
-		argParamter.put("nube","");
-		argParamter.put("token","");
-		argParamter.put("user_type","0");
-		argParamter.put("extra_info","");
-		argParamter.put("cmd_id",cmd_id);
-		return JSON.toJSONString(mapParamter);
-	}
-	/**
-	 * 
-	 * TODO(作用). 关注聊天主题接口参数<br/>
-	 * @author Administrator
-	 * @return
-	 * @since JDK 1.6
-	 * CreateDate: 2016-12-26
-	 */
-	public static String followChatTopic(){
-		Map<String, Object> mapParamter=new HashMap<String, Object>();
-		mapParamter.put("cmd_name","butelFollowTopic");
-		Map<String, Object> argParamter=new HashMap<>();
-		mapParamter.put("parameter", argParamter);
-		String cmd_id=UUID.randomUUID().toString();
-		argParamter.put("cmd_id",cmd_id);
-		argParamter.put("flow_limited",true);
-		argParamter.put("subscribe_flag",false);
-		argParamter.put("cache_msg_num","10");
-		argParamter.put("topic_id",ConfigUtil.getString(ConfigUtil.CHAT_TOPIC));
-		return JSON.toJSONString(mapParamter);
-	}
-	/**
-	 * 
-	 * TODO(作用). 关注主播主题接口参数<br/>
-	 * @author lixl
-	 * @return
-	 * @since JDK 1.6
-	 * CreateDate: 2016-12-26
-	 */
-	public  static String followAnchorTopic(){
-		Map<String, Object> mapParamter=new HashMap<String, Object>();
-		mapParamter.put("cmd_name","butelFollowTopic");
-		Map<String, Object> argParamter=new HashMap<>();
-		mapParamter.put("parameter", argParamter);
-		String cmd_id=UUID.randomUUID().toString();
-		argParamter.put("cmd_id",cmd_id);
-		argParamter.put("flow_limited",false);
-		argParamter.put("subscribe_flag",false);
-		argParamter.put("cache_msg_num","0");
-		argParamter.put("topic_id",ConfigUtil.getString(ConfigUtil.TOPIC));
-		
-		return JSON.toJSONString(mapParamter);
-	}
-	/**
-	 * 
-	 * TODO(作用). 获取topn接口参数<br/>
-	 * @author Administrator
-	 * @return
-	 * @since JDK 1.6
-	 * CreateDate: 2016-12-26
-	 */
-	public static String getTopN(){
-		Map<String, Object> mapParamter=new HashMap<String, Object>();
-		mapParamter.put("cmd_name","butelGetTopN");
-		Map<String, String> argParamter=new HashMap<>();
-		mapParamter.put("parameter", argParamter);
-		String cmd_id=UUID.randomUUID().toString();
-		argParamter.put("cmd_id",cmd_id);
-		argParamter.put("topic_id",ConfigUtil.getString(ConfigUtil.CHAT_TOPIC));
-		return JSON.toJSONString(mapParamter);
-	}
-	/**
-	 * 
-	 * TODO(作用). 获取消息接口参数<br/>
-	 * @author lixl
-	 * @return
-	 * @since JDK 1.6
-	 * CreateDate: 2016-12-26
-	 */
-	public  static String getMsg(){
-		Map<String, Object> mapParamter=new HashMap<String, Object>();
-		mapParamter.put("cmd_name","butelGetMsg");
-		Map<String, String> argParamter=new HashMap<>();
-		mapParamter.put("parameter", argParamter);
-		String cmd_id=UUID.randomUUID().toString();
-		argParamter.put("cmd_id",cmd_id);
-		argParamter.put("localLatestMsgTime","0");
-		return JSON.toJSONString(mapParamter);
-	}
-	/**
-	 * 
-	 * TODO(作用).登出接口参数 <br/>
-	 * @author lixl
-	 * @return
-	 * @since JDK 1.6
-	 * CreateDate: 2016-12-27
-	 */
-	public static String getLogout(){
-		Map<String, Object> mapParamter=new HashMap<String, Object>();
-		mapParamter.put("cmd_name","butelUserLogout");
-		Map<String, String> argParamter=new HashMap<>();
-		mapParamter.put("parameter", argParamter);
-		String cmd_id=UUID.randomUUID().toString();
-		argParamter.put("cmd_id",cmd_id);
-		return JSON.toJSONString(mapParamter);
 	}
 }
