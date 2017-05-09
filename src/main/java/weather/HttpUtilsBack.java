@@ -26,10 +26,8 @@ import org.apache.http.conn.ClientConnectionManager;
 import org.apache.http.conn.scheme.Scheme;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.conn.ssl.SSLSocketFactory;
-import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.AbstractHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
@@ -41,10 +39,8 @@ import org.apache.http.message.BasicNameValuePair;
  * @date 2017年2月28日 下午5:45:39 
  *
  */
-public class HttpUtils {
-	private static ThreadLocal<List<Cookie>> tl1 = null; 
-	private static ThreadLocal<HttpClient> tl2 = null;
-	
+public class HttpUtilsBack {
+
 	/**
 	 * get
 	 * 
@@ -56,14 +52,15 @@ public class HttpUtils {
 	 * @return
 	 * @throws Exception
 	 */
-	public HttpResponse doGet(String host, String path, String method, Map<String, String> headers,
+	public static HttpResponse doGet(String host, String path, String method, Map<String, String> headers,
 			Map<String, String> querys) throws Exception {
 		HttpClient httpClient = wrapClient(host);
+
 		HttpGet request = new HttpGet(buildUrl(host, path, querys));
 		for (Map.Entry<String, String> e : headers.entrySet()) {
 			request.addHeader(e.getKey(), e.getValue());
 		}
-		
+
 		return httpClient.execute(request);
 	}
 

@@ -16,6 +16,13 @@
 
   <dependencies>
   <!-- maven配置文件 -->
+	  <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+	<dependency>
+	    <groupId>org.jsoup</groupId>
+	    <artifactId>jsoup</artifactId>
+	    <version>1.8.3</version>
+	</dependency>
+  
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
@@ -279,6 +286,11 @@
     	<groupId>dom4j</groupId>
     	<artifactId>dom4j</artifactId>
     	<version>1.6.1</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.sun.mail</groupId>
+    	<artifactId>javax.mail</artifactId>
+    	<version>1.4.5</version>
     </dependency>
   </dependencies>
   
