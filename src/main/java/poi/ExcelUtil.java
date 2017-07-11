@@ -29,6 +29,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 /**
  * 创建excel
+ * 要写入的类中必须使用@ColumnName注解
  * @ClassName: ExcelUtils 
  * @author renzy 
  * @date 2017年5月4日 下午3:26:19 
