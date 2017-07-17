@@ -16,7 +16,26 @@ public class Client {
 		content.add(u3);
 		
 		try {
-			ExcelUtil.writeToDisk("e:/example", "user", ExcelVersion.EXCEL2007U, null, User.class);
+			
+			new Thread(){
+
+				@Override
+				public void run() {
+					System.out.println("A");
+					System.out.println("B");
+				}
+				
+			}.start();
+			new Thread(){
+
+				@Override
+				public void run() {
+					System.out.println(1);
+					System.out.println(2);
+				}
+				
+			}.start();
+//			ExcelUtil.writeToDisk("e:/example", "user", ExcelVersion.EXCEL2007U, null, User.class);
 //			ExcelUtil.writeToDisk("e:/example", "user", ExcelVersion.EXCEL2003L, content, User.class);
 //			ExcelUtil.writeToDisk("e:/example", "user", ExcelVersion.EXCEL2003L, new String[]{"ID","姓名","生日"},content, User.class);
 //			ExcelUtil.writeToDiskSplit("e:/example", "user", ExcelVersion.EXCEL2003L, new String[]{"ID","姓名","生日"},content, User.class,2);
